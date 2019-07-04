@@ -207,11 +207,121 @@ pair_sum([1,3,2,2],4)
 """
 
 
+"""
+
+# Palo alto Program"
+
+import re
 
 
+p =list("jubin12345")
+l1 = p[0:5]
+l2 = p[5:10]
+#l2 = l2[::-1]
+nw_ar = []
+count =1    
+for i in range(0, len(l2)):
+    nw_ar.append(l2[len(l2)-count])
+    count += 1
+
+x = l1 + nw_ar
+
+x = "".join(x)
 
 
+"""
 
+# Find the missing element
+# 1st Menthod
+"""
+def finder(ar1, ar2):
+
+
+    ar1.sort()
+    ar2.sort()
+
+    for num1, num2 in zip(ar1, ar2):
+        if num1 != num2:
+            return num1
+        
+    return ar1[-1]
+"""
+
+"""
+# 2nd Method
+
+import collections
+def finder(ar1,ar2):
+    d = collections.defaultdict(int)
+    
+    for num in ar2:
+        d[num] += 1
+
+    for num in ar1:
+        if d[num] == 0:
+            return num
+        
+        else:
+            d[num] -= 1
+    
+ 
+arr1 = [1,2,3,4,5,6,7]
+arr2 = [3,7,2,1,4,6]
+
+finder(arr1, arr2)
+
+"""
+
+
+"""
+# Largest continuous sum
+
+def lar(arr):
+    
+    if len(arr)==0:
+        return 0
+    max_sum = current_sum = arr[0]
+    for num in arr[1:]: 
+        current_sum = max(current_sum, num)
+        max_sum = max(current_sum, max_sum)
+    
+    return max_sum
+
+lar([1,2,-1,3,4,10,10,-10,-1])    
+"""
+
+# word reversing
+"""
+-- assign a pointer and then iterate it until finding a space
+-- then again change the pointer, to a new position
+
+"""
+
+def rev_word(s):
+    
+    word = []
+    space=[' ']
+    length = len(s)
+    
+    i =0
+    
+    while( i< length):
+        
+        if s[i] not in space:
+            
+            w_start =i
+            
+            while(i< length and s[i] not in space):
+                
+                i += 1
+            
+            word.append(s[w_start:i])
+        
+        i += 1
+        
+    return " ".join(reversed(word))
+
+rev_word(' Hello John  How are you ')
 
 
 
