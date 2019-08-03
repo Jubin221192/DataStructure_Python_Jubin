@@ -495,7 +495,25 @@ pp = dict([(v, k) for k, v in thistuple.items()])
 """
 Stack -> FILO [ first in first out]
 
+SOLUTION
+
+This is a very common interview question and is one of the main ways to check your knowledge of using Stacks!
+We will start our solution logic as such:
+
+First we will scan the string from left to right, and every time we see an opening parenthesis we push it to a stack, 
+because we want the last opening parenthesis to be closed first. (Remember the FILO structure of a stack!)
+
+Then, when we see a closing parenthesis we check whether the last opened one is the corresponding closing match, 
+by popping an element from the stack. If it’s a valid match, then we proceed forward, if not return false.
+
+Or if the stack is empty we also return false, because there’s no opening parenthesis associated with this closing one. 
+In the end, we also check whether the stack is empty. If so, we return true, 
+otherwise return false because there were some opened parenthesis that were not closed.
+
 """
+
+"""
+# First Approach
 
 def balance_check(s):
     chars = []
@@ -511,20 +529,260 @@ def balance_check(s):
 
 
 balance_check('[](){([[[]]])}')
-
+"""
                 
+# Second Approach
+
+"""
+def bal_check(s):
+    
+    #chceking even number of elements
+    if(len(s)%2)!=0:
+        return False
+    
+    stack = []
+    
+    # opening parethesis
+    opening = set ('({[')
+    
+    matching_pairs = set([('(',')'),('{','}'),('[',']')])
+    
+    for val in s:
+        
+        if val in opening:
+            stack.append(val)
+        
+        else:
+            
+            # check the parenthesis in the stack or not
+            if len(stack) == 0:
+                return False
+            
+            #last opening parenthesis:
+            
+            last_open = stack.pop()
+            
+            #checking whether it has a closing mtch or not
+            
+            if (last_open,val) not in matching_pairs:
+                return False
+    
+    return len(stack) == 0
+
+bal_check('[[')
+    
+"""
+
+# Inmplementing a Queue
+
+"""
+
+
+Check if Queue is Empty
+Enqueue
+Dequeue
+Return the size of the Queue
+
+
+"""
+"""
+class Queue(object):
+    
+    def __init__(self):
+        self.item = []
+    
+    def isempty(self):
+        return self.item == []
+    
+    def enqueue(self,e):
+        self.item.insert(0,e)
+        
+    def dequeue(self):
+        return self.item.pop()
+    
+    def size(self):
+        return len(self.item)
+    
+    pass
+
+
+q = Queue()
+q.isempty()
+
+q.enqueue(9)
+q.size()
+q.dequeue()
+
+
+list([1,2,3])
+
+
+# Implementing queue using two stacks:
+
+class Que2stack(object):
+    
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def enqueue(self,e):
+        x = self.stack1.append(e)
+        return x
+        
+    def dequeue(self):
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        return self.stack2.pop()
+     
+    pass
+        
+
+r = Que2stack()
+
+r.enqueue(9)
+
+r.dequeue()
+
+"""
+
+"""
+#     
+ 
+ar1 = 'good is sam' 
+
+x= ar1.split(' ')
+
+y =[]
+count = 1
+
+for i in range (0,len(x)):
+    
+    y.append(x[len(x)-count])
+    
+    count += 1
+    
+y = " ".join(y)
+
+"""
+
+"""
+-----------------
+Sequential search
+-----------------
+
+"""
+
+def ord_seq_search(arr, ele):
+    
+    pos = 0
+    
+    found = False
+    stopped = False
+#   while pos < len(arr) and not found and not stopped:
+    while pos < len(arr):
+    
+        if arr[pos] == ele:
+            found = True
+            return found
+        
+        else:
+            if arr[pos] > ele:
+                return stopped
+                
+            else:
+                pos += 1
+            
+    return found
 
 
 
+ord_seq_search([5,1,2,9,8,7],8)
+
+ord_seq_search([1,2,5,7,8,9,12,14],6)
+    
+        
+"""
+-----------------
+Binary search
+-----------------
+
+"""
 
 
+def binary_search(arr,ele):
+    
+    found = False
+    first = 0
+    last = len(arr) - 1
+    
+    
+    while first <= last and not found:
+        mid = (first + last)//2
+        
+        if arr[mid] == ele:
+            found = True
+            
+        else:
+            if ele < arr[mid]:
+                last = mid -1
+            
+            else:
+                first = mid + 1
+    
+    return found
 
 
+# How to run it recursively
+       
+def recur_binary_search(arr,ele):
+    
+    first = 0
+    last = len(arr) - 1
+    
+    while first <= last:
+        mid = (first + last)//2 
+        
+        if arr[mid] == ele:
+            return True
+            
+        else:
+            if ele < arr[mid]:
+                return recur_binary_search(arr[:mid], ele)
+            
+            else:
+                return recur_binary_search(arr[mid+1:], ele)
+    
+    return False 
+            
+        
+recur_binary_search([1,2,3,4,5,6,7,8,9,10],11)
+            
+
+        
+
+d = {'x':1,'y':5,'z':6}
 
 
+m = dict(zip(d.values(),d.keys()))
+print(m)
+        
+ 
+        
+# First letter capitaization
 
+s1 = 'one day i will become what I dreamt of'
 
+x = s1.split(' ')
+x[0][0]=x[0][0].upper()
 
+s1= s1.split(' ')
+
+s1 = [val.capitalize() for val in s1]
+
+    
+    
+        
 
 
 
