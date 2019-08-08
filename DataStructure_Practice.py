@@ -672,6 +672,7 @@ Sequential search
 -----------------
 
 """
+"""
 
 def ord_seq_search(arr, ele):
     
@@ -703,9 +704,9 @@ ord_seq_search([1,2,5,7,8,9,12,14],6)
     
         
 """
------------------
-Binary search
------------------
+#-----------------
+#Binary search
+#-----------------
 
 """
 
@@ -771,19 +772,101 @@ print(m)
         
 # First letter capitaization
 
-s1 = 'one day i will become what I dreamt of'
+def letter_capitalization(string):
+    
+    cap_str = []
+    for val in string.split(' '):
+        cap_str.append(val[0][0].upper() + val[1:])
+    
+    return ' '.join(cap_str)
 
-x = s1.split(' ')
-x[0][0]=x[0][0].upper()
 
-s1= s1.split(' ')
+string = 'one day i will become what I dreamt of'
 
-s1 = [val.capitalize() for val in s1]
+letter_capitalization(string)
 
+
+# pattern printing
+
+def pattern(n):
+    
+    arr = []
+    
+    for i in range(0,n):
+        arr.append([])
+        for j in range(0,n):
+            
+            if(j<=i):
+                arr[i].append('#')
+            else:
+                arr[i].append(' ')
+        print('\n')
+    return arr
+
+def pattern1(n):
     
     
-        
+    for i in range(0,n):
+        for j in range(0,n):
+            
+            if(j<=i):
+                print('#',end=' ')
+            else:
+                print(' ', end =' ')
+        print('\n')
 
+pattern(3)
+pattern1(5)
+
+# pattern matching using recurssion
+
+"""
+
+'''
+def printPartten(n,  '*'): 
+      
+    if (n < 0): # Base condition 
+        return; 
+  
+    # Recursive call 
+    printPartten(n - 1, k + 1);  
+  
+    for i in range(0, k): # it makes spaces 
+        print("*", end=""); 
+    for i in range(0, n): # for print * 
+        print("* ", end = ""); 
+    print("\n", end=""); # for next line 
+
+
+
+printPartten(5)
+    
+def recurse_triangle(num, char):
+    if num > 0:
+        recurse_triangle(num-1, char)
+        print(char*num)
+
+recurse_triangle(5, '*')
+'''
+
+# checking vowels
+
+def check_vowels(string):
+    count = 0 
+
+    string = string.lower()
+
+    for char in string:
+
+        if char in 'aeiou':
+
+            count += 1
+
+    return count
+
+
+check_vowels("Galleo gallili")
+  
 
 
 
