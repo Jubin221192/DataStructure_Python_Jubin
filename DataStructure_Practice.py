@@ -786,71 +786,10 @@ string = 'one day i will become what I dreamt of'
 letter_capitalization(string)
 
 
-# pattern printing
-
-def pattern(n):
-    
-    arr = []
-    
-    for i in range(0,n):
-        arr.append([])
-        for j in range(0,n):
-            
-            if(j<=i):
-                arr[i].append('#')
-            else:
-                arr[i].append(' ')
-        print('\n')
-    return arr
-
-def pattern1(n):
-    
-    
-    for i in range(0,n):
-        for j in range(0,n):
-            
-            if(j<=i):
-                print('#',end=' ')
-            else:
-                print(' ', end =' ')
-        print('\n')
-
-pattern(3)
-pattern1(5)
-
-# pattern matching using recurssion
-
 """
-
-'''
-def printPartten(n,  '*'): 
-      
-    if (n < 0): # Base condition 
-        return; 
-  
-    # Recursive call 
-    printPartten(n - 1, k + 1);  
-  
-    for i in range(0, k): # it makes spaces 
-        print("*", end=""); 
-    for i in range(0, n): # for print * 
-        print("* ", end = ""); 
-    print("\n", end=""); # for next line 
-
-
-
-printPartten(5)
-    
-def recurse_triangle(num, char):
-    if num > 0:
-        recurse_triangle(num-1, char)
-        print(char*num)
-
-recurse_triangle(5, '*')
-'''
-
 # checking vowels
 
+"""
 def check_vowels(string):
     count = 0 
 
@@ -866,16 +805,300 @@ def check_vowels(string):
 
 
 check_vowels("Galleo gallili")
-  
+
+
+# Iterative methodology to print a pyramid
+
+int(((2*4)-1)/2)
+
+def pyramid(n):
+     mid_p = int(((2*n)-1)/2)
+     #li = []
+     for row in range(0,n):
+         # l ='
+         li = []
+         for col in range(0, ((2*n)-1)):
+             if (mid_p - row) <= col and (mid_p + row) >= col:
+                 li.append('#')
+             
+             else:
+                 li.append(' ')
+         print(''.join(li))
+         
+         li=li.clear()
+    
+
+pyramid(3)
+"""
+
+"""             
+             
+# Pyramid problem using recursion
+
+def pyramid(n, row =0, lev = []):
+    
+    if row==n:
+        return
+    
+    if len(lev) == ((2*n)-1):
+        print(''.join(lev))
+
+        lev = lev.clear()
+        return pyramid(n, row +1)
+    
+    mid_point = int(((2*n)-1)/2)
+    
+    if (mid_point - row) <= len(lev) and (mid_point + row) >= len(lev):
+        lev.append('#')
+    
+    else:
+        lev.append(' ')
+    
+    return pyramid(n,row,lev)
+
+pyramid(9)
+
+#Logic for printing a triangle
+def pattern1(n):
+    
+    
+    for i in range(0,n):
+        for j in range(0,n):
+            
+            if(j<=i):
+                print('#',end=' ')
+            else:
+                print(' ', end =' ')
+        print('\n')
+        
+
+
+#Printing a triangle using recurssion
+def triangle(n, row=0, lev = []):
+    
+    if row == n:
+        return
+    
+    if len(lev) == n:
+        print(''.join(lev))
+        
+        lev= lev.clear()
+        return triangle(n, row+1)
+    
+    if len(lev) <= row:
+        lev.append('#')
+    
+    else:
+        lev.append(' ')
+    
+    return triangle(n,row,lev)
+    
+    
+triangle(5)
+"""
+
+# Implement your function below
+"""
+    
+import copy
+def to_string(given_array):
+    list_rows = []
+    for row in given_array:
+        list_rows.append(str(row))
+    return '[' + ',\n '.join(list_rows) + ']'
+    
+"""     
+
+
+"""
+Output
+
+[[7, 4, 1], 
+ [8, 5, 2], 
+ [9, 6, 3]]
+
+"""
+"""
+to_string(a1)        
+        
+def rotate_sub(i,j,n):
+    return j,n-1-i
+
+
+def rotate(given_arr, n):
+    
+    rot = copy.deepcopy(given_arr)
+    
+    for i in range(n):
+        for j in range(n):
+            
+            (new_i, new_j) =rotate_sub(i,j,n)
+            
+            rot[new_i][new_j] = given_arr[i][j]
+            
+    return rot
+
+rotate(a1,3)
+"""
+
+"""
+
+Spiral Matrix
+
+
+"""
+"""
+class Solution:
+    # @param matrix, a list of lists of integers
+    # @return a list of integers
+    def spiralOrder(self, matrix):
+        if matrix == []: return []
+        up = 0; left = 0
+        down = len(matrix)-1
+        right = len(matrix[0])-1
+        direct = 0  # 0: go right   1: go down  2: go left  3: go up
+        res = []
+        while True:
+            if direct == 0:
+                for i in range(left, right+1):
+                    res.append(matrix[up][i])
+                up += 1
+            if direct == 1:
+                for i in range(up, down+1):
+                    res.append(matrix[i][right])
+                right -= 1
+            if direct == 2:
+                for i in range(right, left-1, -1):
+                    res.append(matrix[down][i])
+                down -= 1
+            if direct == 3:
+                for i in range(down, up-1, -1):
+                    res.append(matrix[i][left])
+                left += 1
+            if up > down or left > right: return res
+            direct = (direct+1) % 4
+            
+a1 = [[1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]]
+
+obj = Solution()
+obj.spiralOrder(a1)
+    
+
+10//2
+
+# Merchant sock problem
+
+import collections
+def sock_mer(ar):
+    d = collections.defaultdict(int)
+    
+    for k in ar:
+        d[k] += 1
+        
+    cnt = 0
+    for ele in d.values():
+        cnt += ele//2
+    
+    return cnt
+
+sock_mer([10,20,20,10,30])
+
+x=2
+pa = set()
+
+"""
 
 
 
+def socks_par(ar):
+    
+    pa = set()
+    count = 0
+    for k in ar:
+        if k in pa:
+            pa.remove(k)
+            count +=1
+        else:
+            pa.add(k)
+    
+    return count
 
+
+socks_par([10,20,20,10,30])
+    
+    
             
             
+# Jumping on the clouds
 
+def jump_on_clouds(ar):
+    
+    
+    jump = 0
+    i =0
+    while i < len(ar)-1:
+        
+        if (i+2 == len(ar)) or (ar[i+2]==1):
+            i += 1
+            jump +=1
+        
+        else:
+            i += 2
+            jump += 1
+
+    return jump
+
+
+
+jump_on_clouds([0,1,0,0,1,0])        
+
+
+# Repeated Strings
+
+def repeat_strings(s, n):
+    
+    count = 0
+    value=0
+    ar = []
+    i =0
+    s = list(s)
+    while i < n:
+        
+        ar.append(s[count])
+        if ar[i]=='a':
+            value += 1
             
+        count += 1
+        if (count == len(s)):
+            count = 0
+        
+        i += 1
+    
+    """
+    for val in ar:
+        if val == 'a':
+            value += 1
+    """
+        
+    
+    return  value
             
+
+repeat_strings('abaaa',10)
+
+# Complete the repeatedString function below.
+def repeatedString(s, n):
+    n_of_a = 0
+    for i in s:
+        if i == 'a':
+            n_of_a += 1
+    res = int(n_of_a * (n / len(s)))
+    for i in s[:n % len(s)]:
+        if i == 'a':
+            res += 1
+    return res
             
             
             
