@@ -145,8 +145,8 @@ revers("apple")
 # Anagram
 'client eastwood' 'old west action'
 
-"""
 
+"""
 def anagrm(s1, s2):
     
     s1 = s1.replace(' ','').lower()
@@ -179,8 +179,8 @@ def anagrm(s1, s2):
 anagrm('clint eastwood', 'old west action')
             
 count = {'c':2}
-  
-"""
+""" 
+
 
 """
 # Array Pair sum
@@ -1010,7 +1010,7 @@ pa = set()
 
 """
 
-
+"""
 
 def socks_par(ar):
     
@@ -1076,12 +1076,7 @@ def repeat_strings(s, n):
         
         i += 1
     
-    """
-    for val in ar:
-        if val == 'a':
-            value += 1
-    """
-        
+    
     
     return  value
             
@@ -1101,130 +1096,230 @@ def repeatedString(s, n):
     return res
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-
-
-
-
-
+"""        
+"""          
+def rans_note(mag, note):
     
+    mag = mag.split(' ')
+    note = note.split(' ')
+    
+    d = {}
+    
+    for i in mag:
+        if i not in d:
+            d[i] = 1
+        else:
+            d[i] += 1
+    
+    for j in note:
+        if d.get(j) is None or d[j] == 0:
+            return 'No'
+        else:
+            d[j] -= 1
+    
+    return 'Yes'
+            
 
+rans_note('ive got a lovely bunch of coconuts', 
+          'ive got some coconuts')
+"""
+"""
+def twoStrings(s1, s2):
 
+    d= {}
+    ar =[]
 
+    for i in s1:
+        if i not in d:
+            d[i] = 1
+        else:
+            d[i] += 1
+    for j in s2:
+        if d.get(j) is not None and d[j] > 0:
+            ar.append(j)
+    if (len(ar) == 0):
+        return 'No'
+    
+    return 'YES'
+           
+            
 
+s1 = list('Hello')
+s2 = list('World')
+twoStrings(s1, s2)
 
+"""
+    
+# Anagrams
 
+"""  
+def anagram(s):
+    n = len(s)
+    res = 0
+    for l in range(1, n):
+        cnt = {}
+        for i in range(n - l + 1):
+            subs = list(s[i:i + l])
+            subs.sort()
+            subs = ''.join(subs)
+            if subs in cnt:
+                cnt[subs] += 1
+            else:
+                cnt[subs] = 1
+            res += cnt[subs] - 1
+    return (res)
+
+ar = 'abba'
+anagram(ar)
+"""
+
+"""
+
+# Counting triplets
+
+def countTriplets(arr, r):
+        # initialize the dictionaries
+        r2 = {}
+        r3 = {}
+        count = 0
+
+        # loop throgh the arr itens
+        for k in arr:
+                # if k in r3 indicates the triplet already completed,
+                # the count need be incremented
+                if k in r3:
+                        count += r3[k]
+
+                # if k in r2, it is the secound number of the triplet,
+                # your successor (third element k*r) need be added or incremented in the r3 dict
+                # because is a potencial triplet 
+                if k in r2:
+                        if k*r in r3:
+                                r3[k*r] += r2[k]
+                        else:
+                                r3[k*r] = r2[k]
+
+                # else, k is the first element of the triplet, so,
+                # your seccessor (secound element k*r) need be added or incremented in the r2 dict
+                # because is a potencial triplet
+                if k*r in r2:
+                        r2[k*r] += 1
+                else:
+                        r2[k*r] = 1
+
+        return count
+
+import collections
+def countTriplets(arr, r):
+    # stores number of tuples with two elements that can be formed if we find the key
+    potential_two_tuples = collections.defaultdict(int) 
+    # stores number of tuples with three elements that can be formed if we find the key
+    potential_three_tuples = collections.defaultdict(int)
+    count = 0
+    for k in arr:
+        # k completes the three tuples given we have already found k/(r^2) and k/r  
+        count += potential_three_tuples[k]
+        # For any element of array we can form three element tuples if we find k*r given k / r is already found. Also k forms the second element.
+        potential_three_tuples[k*r] += potential_two_tuples[k]
+        # For any element of array we can form two element tuples if we find k*r. Also k forms the first element.
+        potential_two_tuples[k*r] += 1 
+    return count
+
+countTriplets([1,2,2,4] , 2)
+    
+"""
+
+# find the pairs with given sum in an array:
+
+"""
+def pairs(arr, gm):
+    
+    arr = sorted(arr)
+    l = len(arr) -1
+    p = 0
+    arr_sum = []
+    
+    
+    
+    while p< l:
         
-                 
+        if (arr[p] + arr[l]) > gm:
+            
+            l -= 1
+            
+        elif (arr[p] + arr[l]) < gm:
+            p +=1
+            
+        else:
+            arr_sum.append([arr[p],arr[l]])
+            p += 1
+        
+    
+    return(len(arr_sum))
+           
+
+pairs([5,8,3,4,2,6,10,7,1,9], 11)
+"""           
+
+
+# Making Anagrams
+"""
+def remAnagram(str1, str2): 
+  
+    # make hash array for both string  
+    # and calculate 
+    # frequency of each character 
+    CHARS = 26
+    count1 = [0]*CHARS 
+    count2 = [0]*CHARS 
+  
+    # count frequency of each character  
+    # in first string 
+    i = 0
+    while i < len(str1): 
+        count1[ord(str1[i])-ord('a')] += 1
+        i += 1
+  
+    # count frequency of each character  
+    # in second string 
+    i =0
+    while i < len(str2): 
+        count2[ord(str2[i])-ord('a')] += 1
+        i += 1
+  
+    # traverse count arrays to find  
+    # number of characters 
+    # to be removed 
+    result = 0
+    for i in range(26): 
+        result += abs(count1[i] - count2[i]) 
+    return result 
+  
+# Driver program to run the case 
+
+"""
+"""    
+if __name__ == "__main__": 
+    str1 = "bcadeh"
+    str2 = "hea"
+    print(remAnagram(str1, str2))
+"""
+
+#remAnagram("bcadeh", "hea")
+
+
+#mak_anagrams('cde', 'dcf')
+
+# Alternating Characters
+
+def alt_char(s):
+    s = s.lower()
+    d_cha = 0
+    for i in range(0, len(s)-1):
+        if s[i] == s[i+1]:
+            d_cha +=1
+    return d_cha
+
+alt_char('AAABBB')
+        
+
