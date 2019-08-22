@@ -431,7 +431,7 @@ def to_string(array):
 to_string(x)                 
 """
 
-# Palindrome
+    # Palindrome
 
 """
 def chPal(string):
@@ -1311,7 +1311,7 @@ if __name__ == "__main__":
 #mak_anagrams('cde', 'dcf')
 
 # Alternating Characters
-
+"""
 def alt_char(s):
     s = s.lower()
     d_cha = 0
@@ -1321,5 +1321,142 @@ def alt_char(s):
     return d_cha
 
 alt_char('AAABBB')
+"""    
+
+
+# Sherlock and the Valid String
+
+"""    
+from collections import Counter
+ 
+ 
+def isValid(S):
+    char_map = Counter(S)
+    char_occurence_map = Counter(char_map.values())
+    print('char_map',char_map,'\n')
+    print('char_occurence_map',char_occurence_map,'\n')    
+    if len(char_occurence_map) == 1:
+        return True
+ 
+    if len(char_occurence_map) == 2:
+        for v in char_occurence_map.values():
+            if v == 1:
+                return True
+ 
+    return False
+ 
+   
+S= 'aabbcd'
+isValid(S)
+"""
+"""
+if isValid(S):
+    print ("YES")
+else:
+    print ("NO")
+"""
+
+"""
+from collections import Counter
+
+def isValid(S):
+    c = Counter(S)
+    d = Counter(c.values())
+    print('c: ',c,'\n')
+    print('Counte(c.values): ',d,'\n')
+    distinct_counts = list(set(d.elements()))
+    print('distinct_counts: ', distinct_counts)
+    if len(d) == 1:
+        return "YES"
+    elif len(d) == 2:
+        the_greater_count = max(distinct_counts[0], distinct_counts[1])
+        the_lesser_count = min(distinct_counts[0], distinct_counts[1])
+        if the_greater_count - the_lesser_count == 1:
+            if d[the_greater_count] == 1:
+                return "YES"
+            elif d[the_lesser_count] == 1:
+                return "YES"
+            else:
+                return "NO"
+        elif d[the_lesser_count] == 1:
+            return "YES"
+        else:
+            return "NO"
+    else:
+        return "NO"
         
+isValid('abccc')
+"""
+
+# Special String Again , substring Pallindrome
+
+
+def substrCount(n, s):
+    l = []
+    count = 0
+    cur = None
+
+# 1st pass
+    for i in range(n):
+        if s[i] == cur:
+            count += 1
+        else:
+            if cur is not None:
+                l.append((cur, count))
+            cur = s[i]
+            count = 1
+    l.append((cur, count))
+
+    ans = 0
+		
+# 2nd pass
+    for i in l:
+        ans += (i[1] * (i[1] + 1)) // 2
+
+# 3rd pass
+    for i in range(1, len(l) - 1):
+        if l[i - 1][0] == l[i + 1][0] and l[i][1] == 1:
+            ans += min(l[i - 1][1], l[i + 1][1])
+
+    return ans
+
+substrCount(7,'abcbaba')
+
+# Minimum swaps to sort the array using graph concept
+
+def minSwaps(arr):
+    
+    counter = 0
+    length = len(arr)
+    arr_dict = {}
+    
+    for i, item in enumerate(arr):
+        
+        arr_dict[item] = i
+        
+    checked = [False]*length
+    
+    for key, value in sorted(arr_dict.items(), key = lambda x: x[0]):
+        
+        if checked[key] or key==value:
+            continue
+        
+        c_count = 0
+        value = key
+        
+        while not checked[value]:
+            
+            checked[value] = True
+            value = arr_dict[value]
+            c_count += 1
+            
+        counter += c_count -1
+        
+    return counter
+
+print(minSwaps([0,2,3,4,1,6,5]))
+        
+        
+    
+
 
