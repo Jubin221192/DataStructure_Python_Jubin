@@ -1543,7 +1543,7 @@ def merge_sort(aArr, bArr):
 # Tim sort
 
 
-def timsort():
+def timsort(arr, Run):
     
     for  x in range (0,len(arr), Run):
         
@@ -1560,6 +1560,7 @@ def timsort():
             
         Runinc = Runinc *2
     
+#if __name__ = "__main__":
         
     
             
