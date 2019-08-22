@@ -273,7 +273,7 @@ finder(arr1, arr2)
 """
 
 
-"""
+
 # Largest continuous sum
 
 def lar(arr):
@@ -288,7 +288,7 @@ def lar(arr):
     return max_sum
 
 lar([1,2,-1,3,4,10,10,-10,-1])    
-"""
+
 
 # word reversing
 """
@@ -1468,6 +1468,25 @@ def minSwaps(arr):
 
 print(minSwaps([0,2,3,4,1,6,5]))
         
+# sum of consecutive numbers:
+
+def solution(N):
+    
+    count = 0
+    n= 2
+    
+    while (2*N - (n**2) + n) > 0:
+        a = (2*N - n**2 + n)/(2*n)
+        
+        if a -int(a)==0:
+            print (a,n)
+            count += 1
+            
+        n += 1
+        
+    return count
+
+solution(10)
         
     
 
