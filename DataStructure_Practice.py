@@ -913,14 +913,26 @@ def to_string(given_array):
 """
 Output
 
-[[7, 4, 1], 
- [8, 5, 2], 
- [9, 6, 3]]
+[[1, 2, 3], 
+ [4, 5, 6], 
+ [7, 8, 9]]
+
+===
+
+    [[7, 4, 1], 
+     [8, 5, 2], 
+     [9, 6, 3]]
+
 
 """
 """
+
+
 to_string(a1)        
-        
+
+# Array roation to 90
+# The assumption is that the number of columns is equal to number of rows = n 
+
 def rotate_sub(i,j,n):
     return j,n-1-i
 
