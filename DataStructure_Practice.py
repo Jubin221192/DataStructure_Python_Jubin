@@ -1487,7 +1487,82 @@ def solution(N):
     return count
 
 solution(10)
+
+
+        
+# Tim Sort implementation : which is a combination of insertion and merge sort
+
+# Insertion sort
+def insertion_sort(A):
+    for i in range(1, len(A)):
+        curNum = A[i]
+        
+        for j in range(i-1,0 -1):
+            
+            if A[j] > curNum:
+                A[j+1] = A[j]
+            else:
+                A[j+1]= curNum
+                
+    
+# Merge sort
+                
+                
+def merge_sort(aArr, bArr):
+    
+    a= 0
+    b=0
+    cArr = []
+    
+    while a< len(aArr) and b< len(bArr):
+        if aArr[a]< bArr[b]:
+            cArr.append(aArr[a])
+            a += 1
+            
+        elif aArr[a] > bArr[b]:
+            cArr.append(bArr[b])
+            b +=1
+        
+        else:
+            cArr.append(aArr[a])
+            cArr.append(bArr[b])
+            
+            a += 1
+            b += 1
+            
+    while a<len(aArr):
+        cArr.append(aArr[a])
+        a += 1
+    while b<len(bArr):
+        cArr.append(bArr[b])
+        b +=1
+        
+    return cArr
+
+
+# Tim sort
+
+
+def timsort():
+    
+    for  x in range (0,len(arr), Run):
+        
+        arr[x:x+Run] = insertion_sort([x:x+Run])
         
     
-
+    Runinc = Run
+    
+    while Runinc < len(arr):
+        
+        for x in range(0,len(arr), 2*Runinc):
+            
+            arr[x: x + 2 * Runinc] = merg_sort(arr[x: x+ Runinc], arr[x+Runinc: x + 2*Runinc])
+            
+        Runinc = Runinc *2
+    
+        
+    
+            
+        
+        
 
