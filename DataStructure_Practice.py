@@ -1402,7 +1402,7 @@ isValid('abccc')
 
 # Special String Again , substring Pallindrome
 
-
+"""
 def substrCount(n, s):
     l = []
     count = 0
@@ -1559,9 +1559,76 @@ def timsort(arr, Run):
             arr[x: x + 2 * Runinc] = merg_sort(arr[x: x+ Runinc], arr[x+Runinc: x + 2*Runinc])
             
         Runinc = Runinc *2
-    
+"""  
 #if __name__ = "__main__":
         
+# Function to left rotate arr[] of size n by d 
+def leftRotate(arr, d, n): 
+    g_c_d = gcd(d, n) 
+    for i in range(g_c_d): 
+          
+        # move i-th values of blocks  
+        temp = arr[i] 
+        j = i 
+        while 1: 
+            k = j + d 
+            if k >= n: 
+                k = k - n 
+            if k == i: 
+                break
+            arr[j] = arr[k] 
+            j = k 
+        arr[j] = temp 
+  
+# UTILITY FUNCTIONS 
+# function to print an array  
+def printArray(arr, size): 
+    for i in range(size): 
+        print ("% d" % arr[i], end =" ") 
+   
+# Fuction to get gcd of a and b 
+def gcd(a, b): 
+    if b == 0: 
+        return a; 
+    else: 
+        return gcd(b, a % b) 
+   
+# Driver program to test above functions  
+arr = [1, 2, 3, 4, 5, 6, 7] 
+leftRotate(arr, 2, 7) 
+printArray(arr, 7)
+
+
+# New Year chaos Swapping problem:
+
+def minimumBribes(q):
+    
+    swap_c = 0
+    
+    for i in range(len(q) -1,0,-1):
+        
+        if (q[i] != i+1):
+            
+            if q[i-1] == i+1:
+                swap_c +=1
+                swap(q,i,i-1)
+            elif q[i-2] == i+1:
+                swap_c +=2
+                swap(q,i-2,i-1)
+                swap(q,i-1,i)
+            else:
+                print("Too chaotic")
+    return swap_c
+    
+def swap(q,a,b):
+    
+    temp = q[a]
+    q[a] = q[b]
+    q[b] = temp
+
+
+                
+minimumBribes([2,1,5,3,4])
     
             
         
