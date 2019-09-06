@@ -1433,7 +1433,7 @@ def substrCount(n, s):
     return ans
 
 substrCount(7,'abcbaba')
-
+"""
 # Minimum swaps to sort the array using graph concept
 
 def minSwaps(arr):
@@ -1467,7 +1467,8 @@ def minSwaps(arr):
     return counter
 
 print(minSwaps([0,2,3,4,1,6,5]))
-        
+
+"""        
 # sum of consecutive numbers:
 
 def solution(N):
@@ -1563,6 +1564,18 @@ def timsort(arr, Run):
 #if __name__ = "__main__":
         
 # Function to left rotate arr[] of size n by d 
+
+"""
+arr[] after this step --> {4 2 3 7 5 6 10 8 9 1 11 12}
+
+b)    Then in second set.
+          arr[] after this step --> {4 5 3 7 8 6 10 11 9 1 2 12}
+
+c)    Finally in third set.
+          arr[] after this step --> {4 5 6 7 8 9 10 11 12 1 2 3}
+          
+"""
+
 def leftRotate(arr, d, n): 
     g_c_d = gcd(d, n) 
     for i in range(g_c_d): 
@@ -1600,7 +1613,7 @@ printArray(arr, 7)
 
 
 # New Year chaos Swapping problem:
-
+"""
 def minimumBribes(q):
     
     swap_c = 0
@@ -1617,7 +1630,7 @@ def minimumBribes(q):
                 swap(q,i-2,i-1)
                 swap(q,i-1,i)
             else:
-                print("Too chaotic")
+                return "Too chaotic"
     return swap_c
     
 def swap(q,a,b):
@@ -1628,7 +1641,209 @@ def swap(q,a,b):
 
 
                 
-minimumBribes([2,1,5,3,4])
+minimumBribes([2,5,1,3,4])
+"""
+"""
+# Bubble sort
+
+def bubble_sort(a):
+    
+    n = len(a)
+    count =  0
+    for i in range(0,n):
+        
+        for j in range(0,n-1):
+            
+            if (a[j] > a[j+1]):
+                swap(a,j,j+1)
+                count += 1
+    
+    x = a[0]
+    y = a[n-1]
+
+    
+    p = "Array is sorted in {} swaps.\n First Element: {} \n Last Element: {}".format(count,x,y)
+    print(p.rstrip('\n'))
+    
+    #return (print("Array is sorted in {} swaps.\n First Element: {} \n Last Element: {}".format(count,x,y)))
+
+def swap(a,p,q):
+    temp =a[p]
+    a[p]=a[q]
+    a[q] = temp
+ 
+
+bubble_sort([3,2,1])
+"""
+
+# Maimum toys from a given budget
+# 1st Method
+
+def maximumToys(ar, bud):
+    
+    count = 0
+    c_arr = []
+    tot_sum  = 0
+    
+    ar = [s for s in ar if s < bud ]
+    
+    ar = sorted(ar)
+    
+    
+    for i in range(0,len(ar)):
+        
+        while 1 and i <= len(ar)-1:
+           
+            tot_sum += ar[i]
+            if tot_sum <= bud:
+                count += 1
+                i += 1
+            else:
+                break
+    
+        c_arr.append(count)
+        count -= count
+        tot_sum -= tot_sum
+        
+    return (max(c_arr))
+
+maximumToys([1,12,5,111,200,1000,10], 50)
+
+            
+
+# 2nd method
+
+def maximumToys(ar, bud):
+    
+    max_count = 0
+    
+    ar = sorted(ar)
+    
+    if len(ar)==0 or bud ==0:
+        return max_count
+    
+    for i in range(0, len(ar)):
+        
+        bud -= ar[i]
+        
+        if bud < 0:
+            return max_count
+        
+        max_count +=1
+        
+    return (max_count)
+            
+
+maximumToys([1,2,3,4], 7)
+
+
+# Sorting: Comparator
+
+def comparator(data):
+    
+    for i in range(0,len(data)-1):
+        
+        if data[i][1] < data[i+1][1]:
+            swap(data,i,i+1)
+        
+        elif data[i][1] == data[i+1][1]:
+            if ord(data[i][0][0]) < ord(data[i+1][0][0]):
+                swap(data, i+1, i)
+        else:
+            pass
+                
+    for xs in data:
+        print(" ".join(map(str, xs)))
+    
+            
+
+def swap(d,p,q):
+    
+    temp = d[p]
+    d[p] = d[q]
+    d[q] = temp
+    
+    
+comparator([['amy', 100],['david', 100],['heraldo', 50],['aakansha' ,75],['aleksa',150]])
+
+# Sorting
+
+# Bubble sort: O(n^2)
+# in each iteration check the largest
+
+def bubble_sort(ar):
+    
+    for i in range(len(ar)-1, 0, -1):
+        
+        for j in range(i):
+            
+            if ar[j] > ar[j+1]:
+                temp = ar[j]
+                ar[j] = ar[j+1]
+                ar[j+1] = temp
+                
+    ar = [ar[x] for x in range(len(ar)-1,-1,-1)]
+    
+    
+    return ar
+
+
+bubble_sort([3,7,2,5,1])
+
+# Selection Sort
+# Here in the entire list largest element will be figured out
+
+def selection_sort(arr):
+    
+    for i in range(len(arr)-1, 0, -1):
+        
+        pos_max =0
+        
+        for j in range(1, i+1):
+            
+            if arr[j] > arr[pos_max]:
+                pos_max = j
+    
+        temp = arr[i]
+        arr[i] = arr[pos_max]
+        arr[pos_max] = temp
+        
+    return arr
+
+selection_sort([3,7,2,5,1])
+
+ 
+
+
+    
+
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
             
         
