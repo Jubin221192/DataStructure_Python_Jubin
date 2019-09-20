@@ -1812,6 +1812,240 @@ def selection_sort(arr):
 
 selection_sort([3,7,2,5,1])
 
+
+# is one array a rotation of another:
+
+def is_rotation(A,B):
+    
+    if len(A) != len(B):
+        return False
+    
+    key_val = A[0]
+    key_i = -1
+    
+    for i in range(0,len(A)):
+        
+        if key_val == B[i]:
+            
+            key_i = i
+            break
+    for i in range(0, len(A)):
+        
+        j = (key_i + i) % len(A)
+            
+        if A[i] != B[j]:
+            
+            return False
+    
+    return True
+
+is_rotation([1,2,3,4,5,6,7],[4,45,6,7,1,2,3])
+
+# two sum problem ; leetcode
+
+def two_sum(ar, target):
+    
+    dic = {}
+    
+    for i, item in enumerate(ar):
+        dic[item] = i
+    
+    for i in range(0,len(ar)):
+        val = target - ar[i]
+        
+        if val in dic:
+            return [i,dic[item]]
+    
+    return False
+            
+
+arr = [2,10,41,7,3]
+t = 50
+two_sum(arr, t)
+
+
+# Bob and wendy
+# [wwwbb]
+
+def b_w(ar):
+    
+    bob = False
+    wendy = True
+    # count = 0
+    i=0    
+    while wendy:
+            
+        if ar[i]=='b':
+            wendy = False
+            bob = True
+            break
+            
+        else:
+            if i+1 <= len(ar)-2:
+                if ar[i] == ar[i+1] and ar[i] == ar[i-1]:
+                    ar.remove(ar[i])
+            else:
+                if ar[i] == ar[i+1] and ar[i] == ar[i-1]:
+                    ar.remove(ar[i])
+                wendy = True
+                bob = False           
+                
+        i += 1
+                    
+    while bob:
+        
+        if ar[i]=='w':
+            wendy = True
+            bob = False
+            
+        else:
+            if i+1 <= len(ar)-2:
+                if ar[i] == ar[i+1] and ar[i] == ar[i-1]:
+                    ar.remove(ar[i])
+            else:
+                if ar[i] == ar[i+1] and ar[i] == ar[i-1]:
+                    ar.remove(ar[i])
+                wendy = True
+                bob = False
+        
+        i += 1
+    
+    if i >= len(ar)-1:
+        if bob == True:
+            return 'bob'
+        
+        if wendy == True:
+            return 'wendy'
+
+x =['w','b','b','b']
+
+b_w(x)
+
+# Cambly Programming Exercise
+
+import re
+# import string
+
+def key_value(s):
+    freq = {}
+    s = s.lower()
+    count = 0
+    match_patt = re.findall(r'\b[a-z0-9]{1,100}\b', s)
+    
+    # print('match_patt', len(match_patt))
+    
+    for words in match_patt:
+        if words in freq:
+            freq[words] +=1
+        else:
+            freq[words] = 1
+    
+    # print('freq: ',len(freq))
+    
+        
+    for key, value in sorted(freq.items(), key=lambda x:x[1], reverse = True):
+        print("{} {}".format(key,value))
+        count += 1
+        
+    
+    return count
+
+
+s = str(input())
+
+key_value(s)
+
+
+
+
+
+d = {'x':2, 'y':3,'z': 2}
+
+# TestDome
+
+def is_palindrome(word):
+    
+    x = []
+    word = word.lower()
+    count =1
+    for i in range(0,len(word)):
+        x.append(word[len(word)-count])
+        count += 1
+    
+    x="".join(x)
+        
+    if x == word:
+        return True
+    
+    return None
+    
+print(is_palindrome('Deleveled'))
+
+def unique_names(names1, names2):
+    x = []
+    name = names1 + names2
+    
+    for i in name: 
+        if i not in x:
+            x.append(i)
+    
+    return x
+
+names1 = ["Ava", "Emma", "Olivia"]
+names2 = ["Olivia", "Sophia", "Emma"]
+print(unique_names(names1, names2))
+  
+def dict_com_val(dic_name):
+    d ={}
+    
+    for key, value in dic_name.items():
+        l = []
+        if value not in d:
+            l.append(key)
+            d[value] = l
+        else:
+            #l.append(key)
+            d[value].append(key)
+        
+    
+    return d
+
+
+files = {
+    'Input.txt': 'Randy',
+    'Code.py': 'Stan',
+    'Output.txt': 'Randy'
+} 
+
+dict_com_val(files)
+            
+
+
+
+
+
+    
+
+
+    
+
+                
+            
+            
+        
+            
+        
+        
+            
+    
+    
+            
+            
+    
+        
+        
+    
+    
  
 
 
