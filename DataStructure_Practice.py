@@ -182,7 +182,7 @@ count = {'c':2}
 """ 
 
 
-"""
+
 # Array Pair sum
 
 def pair_sum(ar, key):
@@ -204,7 +204,7 @@ def pair_sum(ar, key):
     
 pair_sum([1,3,2,2],4)
 
-"""
+
 
 
 """
@@ -1854,13 +1854,14 @@ def two_sum(ar, target):
         val = target - ar[i]
         
         if val in dic:
-            return [i,dic[item]]
+            return True
+            #return [i,dic[item]]
     
     return False
             
 
-arr = [2,10,41,7,3]
-t = 50
+arr = [2,10,41,9,3]
+t = 500
 two_sum(arr, t)
 
 

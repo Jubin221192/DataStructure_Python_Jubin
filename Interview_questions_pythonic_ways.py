@@ -36,7 +36,7 @@ def fun(variable):
         return False
 
 # sequence 
-sequence = ['p','q','l', 'n']
+sequence = ['a','e']
 
 # using filter function 
 filtered = filter(fun, sequence)
@@ -78,22 +78,37 @@ def square(li):
     li1 = []
     
     for i in li:
-        li1.append(i**2)
+        li1.append(int(i)**2)
     
     return li
 
-x = list(map(square,n))
+x = [*map(square,n)]
 
 
-x = list(map(lambda x: x**2, n))
-    
+x = [*map(lambda x: x**2, n)]
+x
 li = [i*2 for i in range(0,10)]
     
+li
 
 
 
+# Printing patters
 
+def function(n):
+    
+    val = 97
+    
+    for i in range(1,n):
+        
+        print(chr(val) * i, '\t')
+         
+        val += 1
+    
+    return 'None'
+    
 
+function(5)
 
 
     
